@@ -5,6 +5,8 @@ namespace SixDegrees.Data.Tmdb
 {
     internal class Degree : IDegree
     {
+        private DegreeType _type;
+
         #region JSON Properties
 
         public string Name { get; set; }
@@ -33,7 +35,14 @@ namespace SixDegrees.Data.Tmdb
 
         public DegreeType Type
         {
-            get { return string.IsNullOrEmpty(Title) ? DegreeType.Person : DegreeType.Movie; }
+            get
+            {
+                return _type ??
+                       (string.IsNullOrEmpty(Title)
+                            ? DegreeType.Person
+                            : DegreeType.Movie);
+            }
+            set { _type = value; }
         }
 
         public string InfoUrl { get; set; }

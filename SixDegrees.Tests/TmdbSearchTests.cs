@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Newtonsoft.Json;
 using RestSharp;
 using SixDegrees.Data;
 using SixDegrees.Data.Tmdb;
@@ -11,7 +12,7 @@ namespace SixDegrees.Tests
     [TestClass]
     public class TmdbSearchTests
     {
-        private IDegreeSearchService _searchService;
+        private IDegreeRepository _searchService;
 
         [TestInitialize]
         public void TestInit()
@@ -21,9 +22,15 @@ namespace SixDegrees.Tests
             restClient.AddDefaultParameter("api_key", "cd684dd007b56d859be21f1a4902b2b6");
             //restClient.Proxy = new WebProxy("localhost", 8888);
 
-            restClient.AddHandler("application/json", new NewtonsoftJsonDeserializer());
+            var serializer = new JsonSerializer
+                {
+                    MissingMemberHandling = MissingMemberHandling.Ignore,
+                    NullValueHandling = NullValueHandling.Ignore,
+                    DefaultValueHandling = DefaultValueHandling.Include
+                };
+            restClient.AddHandler("application/json", new NewtonsoftJsonDeserializer(serializer));
 
-            _searchService = new TmdbDegreeSearchService(restClient);
+            _searchService = new TmdbDegreeRepository(restClient);
         }
 
         [TestMethod]

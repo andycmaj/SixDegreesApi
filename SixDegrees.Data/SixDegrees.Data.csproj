@@ -60,9 +60,9 @@
     <Compile Include="NewtonsoftJsonDeserializer.cs" />
     <Compile Include="Tmdb\CastListResponse.cs" />
     <Compile Include="Tmdb\SearchResponse.cs" />
-    <Compile Include="Tmdb\TmdbDegreeSearchService.cs" />
+    <Compile Include="Tmdb\TmdbDegreeRepository.cs" />
     <Compile Include="Tmdb\Degree.cs" />
-    <Compile Include="IDegreeSearchService.cs" />
+    <Compile Include="IDegreeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

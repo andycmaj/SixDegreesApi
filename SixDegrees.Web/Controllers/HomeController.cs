@@ -1,32 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using SixDegrees.Data;
 
 namespace SixDegrees.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+        private readonly IDegreeRepository _degreeRepository;
 
-            return View();
+        public HomeController(IDegreeRepository degreeRepository)
+        {
+            _degreeRepository = degreeRepository;
         }
 
-        public ActionResult About()
+        public ActionResult Search(DegreeType type, string query)
         {
-            ViewBag.Message = "Your app description page.";
+            IEnumerable<IDegree> degrees = _degreeRepository.FindDegrees(type, query);
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return Json(new
+                {
+                    results = degrees
+                });
         }
     }
 }

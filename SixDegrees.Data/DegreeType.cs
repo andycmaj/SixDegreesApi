@@ -1,4 +1,6 @@
-﻿namespace SixDegrees.Data
+﻿using System;
+
+namespace SixDegrees.Data
 {
     public class DegreeType
     {
@@ -12,6 +14,19 @@
         {
             ResourceName = resourceName;
             ChildDegreePropertyName = childDegreePropertyName;
+        }
+
+        public static DegreeType Parse(string name)
+        {
+            switch (name)
+            {
+                case "person":
+                    return Person;
+                case "movie":
+                    return Movie;
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }
