@@ -4,7 +4,7 @@ using SixDegrees.Data;
 
 namespace SixDegrees.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly IDegreeRepository _degreeRepository;
 
