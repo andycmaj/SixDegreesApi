@@ -7,9 +7,10 @@ namespace SixDegrees.Web.Configuration.Dependencies
 {
     public class RestClientProvider : Provider<IRestClient>
     {
-        private const string _apiUrl = "http://api.themoviedb.org/3";
-        private const string _apiKey = "cd684dd007b56d859be21f1a4902b2b6";
-        private const string _jsonContentType = "application/json";
+        private const string ApiUrl = "http://api.themoviedb.org/3";
+        private const string ApiKey = "cd684dd007b56d859be21f1a4902b2b6";
+        private const string JsonContentType = "application/json";
+
         private readonly IDeserializer _jsonDeserializer;
         private readonly bool _shouldUseFiddler;
 
@@ -21,11 +22,11 @@ namespace SixDegrees.Web.Configuration.Dependencies
 
         protected override IRestClient CreateInstance(IContext context)
         {
-            var restClient = new RestClient(_apiUrl);
-            restClient.AddDefaultParameter("api_key", _apiKey);
+            var restClient = new RestClient(ApiUrl);
+            restClient.AddDefaultParameter("api_key", ApiKey);
 
-            restClient.AddDefaultHeader("Accept", _jsonContentType);
-            restClient.AddHandler(_jsonContentType, _jsonDeserializer);
+            restClient.AddDefaultHeader("Accept", JsonContentType);
+            restClient.AddHandler(JsonContentType, _jsonDeserializer);
 
             if (_shouldUseFiddler)
             {

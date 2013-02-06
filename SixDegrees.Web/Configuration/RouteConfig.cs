@@ -1,7 +1,12 @@
-﻿using System.Web.Mvc;
+﻿#region Imports
+
+using System.Linq;
+using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace SixDegrees.Web
+#endregion
+
+namespace SixDegrees.Web.Configuration
 {
     public static class RouteConfig
     {
@@ -11,28 +16,45 @@ namespace SixDegrees.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.IgnoreRoute("Views/Templates/{file}.html");
+
+            /**
+             * JSON API
+             */
+
             routes.MapRoute("Search", "search/{type}/{query}",
-                            new
-                                {
-                                    controller = "Home",
-                                    action = "Search"
-                                },
-                            new
-                                {
-                                    type = TypeConstraint,
-                                    query = @"[\w\s]+"
-                                });
+                new
+                {
+                    controller = "Degree",
+                    action = "Search"
+                },
+                new
+                {
+                    type = TypeConstraint,
+                    query = @"[\w\s]+"
+                });
 
             routes.MapRoute("Lookup", "{type}/{id}",
-                            new
-                                {
-                                    controller = "Degree",
-                                    action = "Lookup"
-                                },
-                            new
-                                {
-                                    type = TypeConstraint
-                                });
+                new
+                {
+                    controller = "Degree",
+                    action = "Lookup"
+                },
+                new
+                {
+                    type = TypeConstraint
+                });
+
+            /**
+             * Pages / Views
+             */
+
+            routes.MapRoute("Home", "",
+                new
+                {
+                    controller = "Home",
+                    action = "Index"
+                });
         }
     }
 }

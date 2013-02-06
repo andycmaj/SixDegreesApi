@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using SixDegrees.Data;
 
 namespace SixDegrees.Web.Controllers
@@ -13,14 +12,9 @@ namespace SixDegrees.Web.Controllers
             _degreeRepository = degreeRepository;
         }
 
-        public ActionResult Search(DegreeType type, string query)
+        public ActionResult Index()
         {
-            IEnumerable<IDegree> degrees = _degreeRepository.FindDegrees(type, query);
-
-            return Json(new
-                {
-                    results = degrees
-                });
+            return View();
         }
     }
 }

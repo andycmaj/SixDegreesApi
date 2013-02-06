@@ -1,7 +1,12 @@
-﻿<html>
-<head>
-</head>
-<body>
+﻿<div id="searchcontainer">
+</div>
 
-</body>
-</html>
+<script>
+    $(function() {
+        var searchView = new Search.View({
+            el: $('#searchcontainer')
+        });
+        
+        searchView.render();
+    });
+</script>

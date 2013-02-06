@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<!-- https://github.com/h5bp/html5-boilerplate/blob/v4.1.0/CHANGELOG.md -->
+<!-- Template based on http://www.initializr.com/try -->
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>Six Degrees</title>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width"/>
+
+        ${Styles.Render("~/styles/bundles/main")}
+		    ${Scripts.Render("~/scripts/bundles/libs")}
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="header-container">
+            <header class="wrapper clearfix">
+                <h1 class="title">h1.title</h1>
+            </header>
+        </div>
+
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+
+				<use content="view" />
+
+            </div>
+        </div>
+
+        <div class="footer-container">
+            <footer class="wrapper">
+                <h3>footer</h3>
+            </footer>
+        </div>
+
+		    <script src="${Scripts.Url("~/templates")}"></script>
+        ${Scripts.Render("~/scripts/modules/search")}
+
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>

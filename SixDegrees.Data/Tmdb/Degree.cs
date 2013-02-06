@@ -5,6 +5,8 @@ namespace SixDegrees.Data.Tmdb
 {
     internal class Degree : IDegree
     {
+        private const string ImageUrlPrefix = "http://cf2.imgobject.com/t/p/w92";
+
         #region JSON Properties
 
         public string Name
@@ -33,7 +35,7 @@ namespace SixDegrees.Data.Tmdb
             get { return null; }
             set
             {
-                ThumbUrl = value;
+                ThumbUrl = BuildThumbUrl(value);
                 Type = DegreeType.Person;
             }
         }
@@ -44,7 +46,7 @@ namespace SixDegrees.Data.Tmdb
             get { return null; }
             set
             {
-                ThumbUrl = value;
+                ThumbUrl = BuildThumbUrl(value);
                 Type = DegreeType.Movie;
             }
         }
@@ -68,6 +70,11 @@ namespace SixDegrees.Data.Tmdb
         public Degree()
         {
             Children = new List<IDegree>();
+        }
+
+        private static string BuildThumbUrl(string fileName)
+        {
+            return ImageUrlPrefix + fileName;
         }
     }
 }
