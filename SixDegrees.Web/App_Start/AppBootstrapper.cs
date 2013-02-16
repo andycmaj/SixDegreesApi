@@ -50,11 +50,10 @@ namespace SixDegrees.Web.App_Start
         {
             IKernel kernel = KernelBootstrapper.Kernel;
 
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles, kernel.Get<HandlebarsTemplateTransform>());
-            ModelBinderConfig.RegisterModelBinders(ModelBinders.Binders);
+            foreach (var configModule in kernel.GetAll<IWebConfigurationModule>())
+            {
+                configModule.Configure();
+            }
         }
 
         /// <summary>
@@ -71,7 +70,7 @@ namespace SixDegrees.Web.App_Start
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            StandardKernel kernel = new StandardKernel(new DependencyConfig());
+            StandardKernel kernel = new StandardKernel(new DependencyConfig(), new ConfigurationModules());
             kernel.Bind<Func<IKernel>>()
                   .ToMethod(ctx => () => kernel);
 

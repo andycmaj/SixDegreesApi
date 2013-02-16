@@ -99,6 +99,23 @@ Options:
             nodeProcess.Start();
             nodeProcess.WaitForExit();
 
+            //foreach (String fileName in _templateFileNames)
+            //{
+            //    var watcher = new FileSystemWatcher(Path.GetDirectoryName(fileName))
+            //    {
+            //        EnableRaisingEvents = true
+            //    };
+            //    watcher.Changed += (sender, e) =>
+            //    {
+            //        watcher.EnableRaisingEvents = false;
+
+            //        File.Delete(_outputFileName);
+            //        Compile();
+
+            //        watcher.Dispose();
+            //    };
+            //}
+
             return File.ReadAllText(_outputFileName);
         }
 

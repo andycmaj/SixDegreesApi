@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SixDegrees.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,6 +10,13 @@ namespace SixDegrees.Web.Controllers
 {
     public class DegreesController : ApiController
     {
+        private readonly IDegreeRepository _degreeRepository;
+
+        public DegreesController(IDegreeRepository degreeRepository)
+        {
+            _degreeRepository = degreeRepository;
+        }
+
         // GET api/degrees
         public IEnumerable<string> Get()
         {

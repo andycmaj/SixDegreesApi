@@ -194,28 +194,32 @@
     <Compile Include="App_Start\NLogBootstrapper.cs" />
     <Compile Include="Configuration\ActionResults\ConfigurableJsonResult.cs" />
     <Compile Include="Configuration\ActionResults\ConfigurableJsonResultFactory.cs" />
-    <Compile Include="Configuration\BundleConfig.cs" />
     <Compile Include="Configuration\Bundles\HandlebarsTemplateTransform.cs" />
     <Compile Include="Configuration\Bundles\ITemplateCompiler.cs" />
     <Compile Include="Configuration\Bundles\TemplateCompiler.cs" />
+    <Compile Include="Configuration\IWebConfigurationModule.cs" />
+    <Compile Include="Configuration\Dependencies\ConfigurationModules.cs" />
     <Compile Include="Configuration\Dependencies\HandlebarsCompilerProvider.cs" />
     <Compile Include="Configuration\Dependencies\JsonSerializerProvider.cs" />
-    <Compile Include="Configuration\FilterConfig.cs" />
+    <Compile Include="Configuration\Dependencies\NinjectApiDependencyResolver.cs" />
+    <Compile Include="Configuration\Dependencies\NinjectDependencyScope.cs" />
     <Compile Include="App_Start\AppBootstrapper.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Configuration\ModelBinderConfig.cs" />
-    <Compile Include="Configuration\RouteConfig.cs" />
+    <Compile Include="Configuration\Formatters\JsonNetFormatter.cs" />
+    <Compile Include="Configuration\MvcConfigModule.cs" />
     <Compile Include="App_Start\SparkBootstrapper.cs" />
-    <Compile Include="Configuration\WebApiConfig.cs" />
+    <Compile Include="Configuration\WebApiConfigModule.cs" />
     <Compile Include="Configuration\Binders\DegreeTypeModelBinder.cs" />
     <Compile Include="Configuration\Dependencies\DependencyConfig.cs" />
     <Compile Include="Configuration\Dependencies\RestClientProvider.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\Degree.cs" />
     <Compile Include="Controllers\DegreesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Configuration\Filters\AllowJsonGetFilterAttribute.cs" />
     <Compile Include="Controllers\DegreeController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -754,6 +758,8 @@
     </None>
     <None Include="Scripts\libs\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\CommonModule.js" />
+    <Content Include="Scripts\libs\backbone.marionette.js" />
+    <Content Include="Scripts\libs\backbone.marionette.min.js" />
     <Content Include="Scripts\libs\jquery-1.9.0.min.map" />
     <Content Include="Scripts\libs\backbone.js" />
     <Content Include="Scripts\libs\backbone.min.js" />

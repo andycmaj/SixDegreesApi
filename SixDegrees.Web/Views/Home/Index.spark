@@ -3,10 +3,6 @@
 
 <script>
     $(function() {
-        var searchView = new Search.View({
-            el: $('#searchcontainer')
-        });
-        
-        searchView.render();
+        App.start();
     });
 </script>

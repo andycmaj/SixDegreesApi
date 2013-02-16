@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DegreeType.cs" />
+    <Compile Include="DegreeTypeTypeConverter.cs" />
     <Compile Include="IDegree.cs" />
     <Compile Include="NewtonsoftJsonDeserializer.cs" />
     <Compile Include="Tmdb\CastListResponse.cs" />

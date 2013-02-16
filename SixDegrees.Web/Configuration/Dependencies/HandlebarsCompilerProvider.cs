@@ -1,7 +1,6 @@
 ﻿#region Imports
 
 using System.Linq;
-using System.Reflection;
 using System.Web;
 using System.Web.Optimization;
 
@@ -26,13 +25,14 @@ namespace SixDegrees.Web.Configuration.Dependencies
             string workingDir = server.MapPath(WorkingDirectory);
             string nodeFileName = server.MapPath(NodeExecutableFileName);
             string outputFileName = server.MapPath(OutputFileName);
-            
-            return new TemplateCompiler()
-                .WithWorkingDirectory(workingDir)
-                .WithNodeJsExecutableFileName(nodeFileName)
-                .WithOutputFileName(outputFileName)
-                .WithMinification(BundleTable.EnableOptimizations)
-                .WithAMDExport(false);
+
+            TemplateCompiler compiler =
+                new TemplateCompiler().WithWorkingDirectory(workingDir)
+                                      .WithNodeJsExecutableFileName(nodeFileName)
+                                      .WithOutputFileName(outputFileName)
+                                      .WithMinification(BundleTable.EnableOptimizations)
+                                      .WithAMDExport(false);
+            return compiler;
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace SixDegrees.Data
 {
+    [TypeConverter(typeof(DegreeTypeTypeConverter))]
     public class DegreeType
     {
         public static DegreeType Person = new DegreeType("person", "credits");
@@ -18,7 +20,7 @@ namespace SixDegrees.Data
 
         public static DegreeType Parse(string name)
         {
-            switch (name)
+            switch (name.ToLower())
             {
                 case "person":
                     return Person;
