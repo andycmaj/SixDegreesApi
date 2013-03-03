@@ -1,6 +1,4 @@
-﻿<div id="searchcontainer">
-</div>
-
+﻿<section id="main"></section>
 <script>
     $(function() {
         App.start();

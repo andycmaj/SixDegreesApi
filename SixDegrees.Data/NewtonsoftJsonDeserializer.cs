@@ -1,8 +1,12 @@
 ﻿using System.IO;
+using System.Linq;
+
 using Newtonsoft.Json;
+
 using RestSharp;
 using RestSharp.Deserializers;
 using RestSharp.Serializers;
+
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace SixDegrees.Data
@@ -39,7 +43,6 @@ namespace SixDegrees.Data
             ContentType = "application/json";
             _serializer = serializer;
         }
-
 
         public T Deserialize<T>(IRestResponse response)
         {

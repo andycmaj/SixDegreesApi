@@ -1,10 +1,6 @@
 ﻿(function (Backbone, Marionaette, Handlebars, Common) {
   
-    var App = window.App = new Marionette.Application();
-
-    App.addRegions({
-        "searchRegion": "#searchcontainer"
-    });
+   
     
     /**
      * Helper to render compiled handlebars templates by name (without specifying

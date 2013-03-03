@@ -1,31 +1,36 @@
-﻿
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using System.Web;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+using SixDegrees.Web.Configuration.Dependencies;
 
 namespace SixDegrees.Web.Configuration
 {
     public class JsonNetFormatter : MediaTypeFormatter
     {
-        public JsonNetFormatter()
+        private readonly JsonSerializer _serializer;
+
+        public JsonNetFormatter(JsonSerializerProvider serializerProvider)
         {
-            SupportedMediaTypes.Add(new System.Net.Http.Headers.MediaTypeHeaderValue("application/json"));
+            _serializer = serializerProvider.GetSerializer();
+            SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
         }
 
         public override bool CanWriteType(Type type)
         {
             // don't serialize JsonValue structure use default for that
-            if (type == typeof(JValue) || type == typeof(JObject) || type == typeof(JArray))
+            if (type == typeof (JValue) || type == typeof (JObject) || type == typeof (JArray))
+            {
                 return false;
+            }
 
             return true;
         }
@@ -35,52 +40,39 @@ namespace SixDegrees.Web.Configuration
             return true;
         }
 
-        public override System.Threading.Tasks.Task<object> ReadFromStreamAsync(Type type,
-                                                            Stream stream,
-                                                            HttpContent content,
-                                                            IFormatterLogger formatterLogger)
+        public override Task<object> ReadFromStreamAsync(Type type,
+                                                         Stream stream,
+                                                         HttpContent content,
+                                                         IFormatterLogger formatterLogger)
         {
-            var task = Task<object>.Factory.StartNew(() =>
+            return Task<object>.Factory.StartNew(() =>
             {
-                var settings = new JsonSerializerSettings()
+                using (var sr = new StreamReader(stream))
                 {
-                    NullValueHandling = NullValueHandling.Ignore,
-                };
-
-                var sr = new StreamReader(stream);
-                var jreader = new JsonTextReader(sr);
-
-                var ser = new JsonSerializer();
-                ser.Converters.Add(new IsoDateTimeConverter());
-
-                object val = ser.Deserialize(jreader, type);
-                return val;
+                    using (var jreader = new JsonTextReader(sr))
+                    {
+                        return _serializer.Deserialize(jreader, type);
+                    }
+                }
             });
-
-            return task;
         }
 
-        public override Task WriteToStreamAsync(Type type, object value,
+        public override Task WriteToStreamAsync(Type type,
+                                                object value,
                                                 Stream stream,
                                                 HttpContent content,
                                                 TransportContext transportContext)
         {
-            var task = Task.Factory.StartNew(() =>
+            return Task.Factory.StartNew(() =>
             {
-                var settings = new JsonSerializerSettings()
+                using (var sw = new StreamWriter(stream))
                 {
-                    NullValueHandling = NullValueHandling.Ignore,
-                };
-
-                string json = JsonConvert.SerializeObject(value, Formatting.Indented,
-                                                          new JsonConverter[1] { new IsoDateTimeConverter() });
-
-                byte[] buf = System.Text.Encoding.Default.GetBytes(json);
-                stream.Write(buf, 0, buf.Length);
-                stream.Flush();
+                    using (var jw = new JsonTextWriter(sw))
+                    {
+                        _serializer.Serialize(jw, value);
+                    }
+                }
             });
-
-            return task;
         }
     }
 }
