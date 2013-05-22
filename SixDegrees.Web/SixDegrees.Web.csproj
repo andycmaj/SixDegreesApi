@@ -99,6 +99,12 @@
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="RouteDebugger">
+      <HintPath>..\packages\routedebugger.2.1.4.0\lib\net40\RouteDebugger.dll</HintPath>
+    </Reference>
+    <Reference Include="RouteMagic">
+      <HintPath>..\packages\RouteMagic.1.2\lib\net40\RouteMagic.dll</HintPath>
+    </Reference>
     <Reference Include="Spark">
       <HintPath>..\packages\Spark.1.7.5.1\lib\NET40\Spark.dll</HintPath>
     </Reference>
@@ -118,6 +124,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -164,10 +174,6 @@
     <Reference Include="System.Web.Providers">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
@@ -198,6 +204,25 @@
   <ItemGroup>
     <Compile Include="App_Start\NLogBootstrapper.cs" />
     <Compile Include="App_Start\SwaggerNet.cs" />
+    <Compile Include="Areas\RouteDebugger\Components\ActionSelectSimulator.cs" />
+    <Compile Include="Areas\RouteDebugger\Components\DictionaryExtensions.cs" />
+    <Compile Include="Areas\RouteDebugger\Components\HttpParameterBindingExtensions.cs" />
+    <Compile Include="Areas\RouteDebugger\Components\TypeHelper.cs" />
+    <Compile Include="Areas\RouteDebugger\Controllers\RouteDebuggerController.cs" />
+    <Compile Include="Areas\RouteDebugger\InspectActionInvoker.cs" />
+    <Compile Include="Areas\RouteDebugger\InspectActionSelector.cs" />
+    <Compile Include="Areas\RouteDebugger\InspectControllerSelector.cs" />
+    <Compile Include="Areas\RouteDebugger\InspectHandler.cs" />
+    <Compile Include="Areas\RouteDebugger\Models\ActionSelectionInfo.cs" />
+    <Compile Include="Areas\RouteDebugger\Models\ActionSelectionLog.cs" />
+    <Compile Include="Areas\RouteDebugger\Models\ControllerSelectionInfo.cs" />
+    <Compile Include="Areas\RouteDebugger\Models\HttpParameterDescriptionInfo.cs" />
+    <Compile Include="Areas\RouteDebugger\Models\InspectData.cs" />
+    <Compile Include="Areas\RouteDebugger\Models\RouteDataInfo.cs" />
+    <Compile Include="Areas\RouteDebugger\Models\RouteInfo.cs" />
+    <Compile Include="Areas\RouteDebugger\RequestHelper.cs" />
+    <Compile Include="Areas\RouteDebugger\RouteDebuggerAreaRegistration.cs" />
+    <Compile Include="Areas\RouteDebugger\RouteDebuggerConfig.cs" />
     <Compile Include="Configuration\ActionResults\ConfigurableJsonResult.cs" />
     <Compile Include="Configuration\ActionResults\ConfigurableJsonResultFactory.cs" />
     <Compile Include="Configuration\Bundles\HandlebarsTemplateTransform.cs" />
@@ -213,7 +238,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Configuration\Formatters\JsonNetFormatter.cs" />
-    <Compile Include="Configuration\MvcConfigModule.cs" />
     <Compile Include="App_Start\SparkBootstrapper.cs" />
     <Compile Include="Configuration\WebApiConfigModule.cs" />
     <Compile Include="Configuration\Binders\DegreeTypeModelBinder.cs" />
@@ -231,6 +255,18 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Areas\RouteDebugger\Content\rdstyle.css" />
+    <Content Include="Areas\RouteDebugger\Scripts\detect.js" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\knockout-2.2.1.debug.js" />
+    <Content Include="Scripts\knockout-2.2.1.js" />
     <Content Include="SwaggerUI\css\screen.css" />
     <Content Include="SwaggerUI\images\pet_store_api.png" />
     <Content Include="SwaggerUI\images\wordnik_api.png" />
@@ -255,6 +291,8 @@
     <Content Include="Content\images\icons-18-white.png" />
     <Content Include="Content\images\icons-36-black.png" />
     <Content Include="Content\images\icons-36-white.png" />
+    <Content Include="Areas\RouteDebugger\Views\Web.config" />
+    <Content Include="Areas\RouteDebugger\Views\RouteDebugger\Index.cshtml" />
     <None Include="Content\main.scss" />
     <Content Include="Content\normalize.css" />
     <Content Include="Content\style.css" />
@@ -317,227 +355,7 @@
     <Content Include="App_Readme\Handlebarsjs_README.md" />
     <Content Include="App_Readme\Handlebarsjs_LICENSE" />
     <Content Include="App_Readme\Bundler_README.txt" />
-    <Content Include="node_modules\clean-css\index.js" />
-    <Content Include="node_modules\clean-css\lib\clean.js" />
-    <Content Include="node_modules\clean-css\node_modules\optimist\index.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\browser.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\cake.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\coffee-script.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\command.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\grammar.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\helpers.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\index.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\lexer.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\nodes.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\optparse.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\parser.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\repl.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\rewriter.js" />
-    <Content Include="node_modules\coffee-script\lib\coffee-script\scope.js" />
-    <Content Include="node_modules\handlebars\lib\handlebars.js" />
-    <Content Include="node_modules\handlebars\lib\handlebars\base.js" />
-    <Content Include="node_modules\handlebars\lib\handlebars\compiler\ast.js" />
-    <Content Include="node_modules\handlebars\lib\handlebars\compiler\base.js" />
-    <Content Include="node_modules\handlebars\lib\handlebars\compiler\compiler.js" />
-    <Content Include="node_modules\handlebars\lib\handlebars\compiler\index.js" />
-    <Content Include="node_modules\handlebars\lib\handlebars\compiler\parser.js" />
-    <Content Include="node_modules\handlebars\lib\handlebars\compiler\printer.js" />
-    <Content Include="node_modules\handlebars\lib\handlebars\compiler\visitor.js" />
-    <Content Include="node_modules\handlebars\lib\handlebars\runtime.js" />
-    <Content Include="node_modules\handlebars\lib\handlebars\utils.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\bool.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\boolean_double.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\boolean_single.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\default_hash.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\default_singles.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\divide.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\line_count.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\line_count_options.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\line_count_wrap.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\nonopt.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\reflect.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\short.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\string.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\usage-options.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\example\xup.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\index.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\example\center.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\example\meat.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\index.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\test\break.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\test\idleness.txt" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\test\wrap.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\test\parse.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\test\usage.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\test\_.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\test\_\argv.js" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\test\_\bin.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\docstyle.css" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\lib\consolidator.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\lib\object-ast.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\lib\parse-js.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\lib\process.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\lib\squeeze-more.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\README.html" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\beautify.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\testparser.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\array1.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\array2.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\array3.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\array4.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\assignment.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\concatstring.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\const.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\empty-blocks.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\forstatement.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\if.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\ifreturn.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\ifreturn2.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue10.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue11.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue13.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue14.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue16.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue17.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue20.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue21.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue25.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue27.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue278.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue28.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue29.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue30.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue34.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue4.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue48.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue50.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue53.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue54.1.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue68.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue69.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue9.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\mangle.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\null_string.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\strict-equals.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\var.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\whitespace.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\with.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\array1.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\array2.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\array3.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\array4.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\assignment.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\concatstring.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\const.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\empty-blocks.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\forstatement.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\if.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\ifreturn.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\ifreturn2.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue10.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue11.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue13.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue14.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue16.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue17.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue20.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue21.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue25.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue27.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue278.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue28.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue29.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue30.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue34.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue4.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue48.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue50.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue53.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue54.1.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue68.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue69.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue9.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\mangle.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\null_string.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\strict-equals.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\var.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\whitespace.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\with.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\test\unit\scripts.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\269.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\app.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\embed-tokens.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\goto.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\goto2.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\hoist.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\instrument.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\instrument2.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\liftvars.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\test.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\uglify-hangs.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\tmp\uglify-hangs2.js" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\uglify-js.js" />
-    <Content Include="node_modules\handlebars\out.js" />
-    <Content Include="node_modules\less\lib\less\browser.js" />
-    <Content Include="node_modules\less\lib\less\colors.js" />
-    <Content Include="node_modules\less\lib\less\cssmin.js" />
-    <Content Include="node_modules\less\lib\less\functions.js" />
-    <Content Include="node_modules\less\lib\less\index.js" />
-    <Content Include="node_modules\less\lib\less\parser.js" />
-    <Content Include="node_modules\less\lib\less\rhino.js" />
-    <Content Include="node_modules\less\lib\less\tree.js" />
-    <Content Include="node_modules\less\lib\less\tree\alpha.js" />
-    <Content Include="node_modules\less\lib\less\tree\anonymous.js" />
-    <Content Include="node_modules\less\lib\less\tree\assignment.js" />
-    <Content Include="node_modules\less\lib\less\tree\call.js" />
-    <Content Include="node_modules\less\lib\less\tree\color.js" />
-    <Content Include="node_modules\less\lib\less\tree\comment.js" />
-    <Content Include="node_modules\less\lib\less\tree\condition.js" />
-    <Content Include="node_modules\less\lib\less\tree\dimension.js" />
-    <Content Include="node_modules\less\lib\less\tree\directive.js" />
-    <Content Include="node_modules\less\lib\less\tree\element.js" />
-    <Content Include="node_modules\less\lib\less\tree\expression.js" />
-    <Content Include="node_modules\less\lib\less\tree\import.js" />
-    <Content Include="node_modules\less\lib\less\tree\javascript.js" />
-    <Content Include="node_modules\less\lib\less\tree\keyword.js" />
-    <Content Include="node_modules\less\lib\less\tree\media.js" />
-    <Content Include="node_modules\less\lib\less\tree\mixin.js" />
-    <Content Include="node_modules\less\lib\less\tree\operation.js" />
-    <Content Include="node_modules\less\lib\less\tree\paren.js" />
-    <Content Include="node_modules\less\lib\less\tree\quoted.js" />
-    <Content Include="node_modules\less\lib\less\tree\rule.js" />
-    <Content Include="node_modules\less\lib\less\tree\ruleset.js" />
-    <Content Include="node_modules\less\lib\less\tree\selector.js" />
-    <Content Include="node_modules\less\lib\less\tree\url.js" />
-    <Content Include="node_modules\less\lib\less\tree\value.js" />
-    <Content Include="node_modules\less\lib\less\tree\variable.js" />
-    <Content Include="node_modules\lib\parse-js.js" />
-    <Content Include="node_modules\lib\process.js" />
-    <Content Include="node_modules\lib\squeeze-more.js" />
-    <Content Include="node_modules\node.exe" />
-    <Content Include="node_modules\sass\lib\sass.js" />
-    <Content Include="node_modules\step\lib\step.js" />
-    <Content Include="node_modules\uglify-js.js" />
     <Content Include="robots.txt" />
-    <Content Include="node_modules\coffee-script\package.json" />
-    <Content Include="node_modules\handlebars\.jshintrc" />
-    <Content Include="node_modules\handlebars\.npmignore" />
-    <Content Include="node_modules\handlebars\.rspec" />
-    <Content Include="node_modules\handlebars\bin\handlebars" />
-    <Content Include="node_modules\handlebars\LICENSE" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\LICENSE" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\package.json" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\README.markdown" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\package.json" />
-    <Content Include="node_modules\handlebars\node_modules\optimist\README.markdown" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\bin\uglifyjs" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\package.json" />
-    <Content Include="node_modules\handlebars\node_modules\uglify-js\README.org" />
-    <Content Include="node_modules\handlebars\package.json" />
-    <Content Include="node_modules\handlebars\README.markdown" />
-    <Content Include="node_modules\less\package.json" />
-    <Content Include="node_modules\sass\package.json" />
-    <Content Include="node_modules\step\package.json" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

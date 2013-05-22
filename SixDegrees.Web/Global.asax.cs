@@ -9,6 +9,7 @@ using Ninject.Web.Common;
 
 using SixDegrees.Web.Configuration;
 using SixDegrees.Web.Configuration.Bundles;
+using SixDegrees.Web.Areas.RouteDebugger;
 
 namespace SixDegrees.Web
 {
@@ -19,6 +20,7 @@ namespace SixDegrees.Web
     {
         protected void Application_Start()
         {
+            RouteDebuggerAreaRegistration.RegisterAllAreas();
         }
     }
 }

@@ -23,9 +23,6 @@ namespace SixDegrees.Web.Configuration.Dependencies
 
             Bind<IWebConfigurationModule>()
                 .To<WebApiConfigModule>();
-
-            Bind<IWebConfigurationModule>()
-                .To<MvcConfigModule>();
         }
     }
 }
