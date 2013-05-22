@@ -32,6 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\SixDegrees.Web.XML</DocumentationFile>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -229,7 +230,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Mvc.Bundler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="SwaggerUI\css\screen.css" />
     <Content Include="SwaggerUI\images\pet_store_api.png" />
@@ -249,244 +249,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
-    <Content Include="bundler\bundler.js" />
-    <Content Include="bundler\node.exe" />
-    <Content Include="bundler\node_modules\clean-css\index.js" />
-    <Content Include="bundler\node_modules\clean-css\lib\clean.js" />
-    <Content Include="bundler\node_modules\clean-css\node_modules\optimist\index.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\browser.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\cake.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\coffee-script.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\command.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\grammar.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\helpers.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\index.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\lexer.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\nodes.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\optparse.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\parser.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\repl.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\rewriter.js" />
-    <Content Include="bundler\node_modules\coffee-script\lib\coffee-script\scope.js" />
-    <Content Include="bundler\node_modules\handlebars\lib\handlebars.js" />
-    <Content Include="bundler\node_modules\handlebars\lib\handlebars\base.js" />
-    <Content Include="bundler\node_modules\handlebars\lib\handlebars\compiler\ast.js" />
-    <Content Include="bundler\node_modules\handlebars\lib\handlebars\compiler\base.js" />
-    <Content Include="bundler\node_modules\handlebars\lib\handlebars\compiler\compiler.js" />
-    <Content Include="bundler\node_modules\handlebars\lib\handlebars\compiler\index.js" />
-    <Content Include="bundler\node_modules\handlebars\lib\handlebars\compiler\parser.js" />
-    <Content Include="bundler\node_modules\handlebars\lib\handlebars\compiler\printer.js" />
-    <Content Include="bundler\node_modules\handlebars\lib\handlebars\compiler\visitor.js" />
-    <Content Include="bundler\node_modules\handlebars\lib\handlebars\runtime.js" />
-    <Content Include="bundler\node_modules\handlebars\lib\handlebars\utils.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\bool.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\boolean_double.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\boolean_single.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\default_hash.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\default_singles.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\divide.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\line_count.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\line_count_options.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\line_count_wrap.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\nonopt.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\reflect.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\short.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\string.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\usage-options.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\example\xup.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\index.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\example\center.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\example\meat.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\index.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\test\break.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\test\idleness.txt" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\test\wrap.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\test\parse.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\test\usage.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\test\_.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\test\_\argv.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\test\_\bin.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\docstyle.css" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\lib\consolidator.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\lib\object-ast.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\lib\parse-js.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\lib\process.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\lib\squeeze-more.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\README.html" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\beautify.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\testparser.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\array1.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\array2.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\array3.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\array4.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\assignment.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\concatstring.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\const.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\empty-blocks.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\forstatement.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\if.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\ifreturn.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\ifreturn2.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue10.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue11.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue13.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue14.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue16.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue17.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue20.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue21.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue25.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue27.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue278.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue28.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue29.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue30.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue34.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue4.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue48.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue50.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue53.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue54.1.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue68.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue69.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\issue9.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\mangle.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\null_string.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\strict-equals.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\var.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\whitespace.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\expected\with.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\array1.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\array2.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\array3.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\array4.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\assignment.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\concatstring.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\const.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\empty-blocks.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\forstatement.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\if.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\ifreturn.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\ifreturn2.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue10.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue11.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue13.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue14.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue16.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue17.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue20.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue21.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue25.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue27.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue278.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue28.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue29.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue30.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue34.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue4.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue48.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue50.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue53.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue54.1.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue68.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue69.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\issue9.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\mangle.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\null_string.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\strict-equals.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\var.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\whitespace.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\compress\test\with.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\test\unit\scripts.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\269.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\app.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\embed-tokens.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\goto.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\goto2.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\hoist.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\instrument.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\instrument2.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\liftvars.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\test.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\uglify-hangs.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\tmp\uglify-hangs2.js" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\uglify-js.js" />
-    <Content Include="bundler\node_modules\handlebars\out.js" />
-    <Content Include="bundler\node_modules\less\lib\less\browser.js" />
-    <Content Include="bundler\node_modules\less\lib\less\colors.js" />
-    <Content Include="bundler\node_modules\less\lib\less\cssmin.js" />
-    <Content Include="bundler\node_modules\less\lib\less\functions.js" />
-    <Content Include="bundler\node_modules\less\lib\less\index.js" />
-    <Content Include="bundler\node_modules\less\lib\less\parser.js" />
-    <Content Include="bundler\node_modules\less\lib\less\rhino.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\alpha.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\anonymous.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\assignment.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\call.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\color.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\comment.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\condition.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\dimension.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\directive.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\element.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\expression.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\import.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\javascript.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\keyword.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\media.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\mixin.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\operation.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\paren.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\quoted.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\rule.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\ruleset.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\selector.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\url.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\value.js" />
-    <Content Include="bundler\node_modules\less\lib\less\tree\variable.js" />
-    <Content Include="bundler\node_modules\lib\parse-js.js" />
-    <Content Include="bundler\node_modules\lib\process.js" />
-    <Content Include="bundler\node_modules\lib\squeeze-more.js" />
-    <Content Include="bundler\node_modules\sass\lib\sass.js" />
-    <Content Include="bundler\node_modules\step\lib\step.js" />
-    <Content Include="bundler\node_modules\uglify-js.js" />
-    <Content Include="bundler\vs2010-extension\BundlerRunOnSave.dll" />
-    <Content Include="bundler\vs2010-extension\BundlerRunOnSave.dll.CodeAnalysisLog.xml" />
-    <Content Include="bundler\vs2010-extension\BundlerRunOnSave.pdb" />
-    <Content Include="bundler\vs2010-extension\BundlerRunOnSave.pkgdef" />
-    <Content Include="bundler\vs2010-extension\extension.vsixmanifest" />
-    <Content Include="bundler\vs2010-extension\favicon.ico" />
-    <Content Include="bundler\vs2010-extension\ServiceStack-logo.png" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\ajax-loader.png" />
     <Content Include="Content\images\icons-18-black.png" />
     <Content Include="Content\images\icons-18-white.png" />
     <Content Include="Content\images\icons-36-black.png" />
     <Content Include="Content\images\icons-36-white.png" />
-    <Content Include="bundler\vs2010-extension\BundlerRunOnSave.vsix" />
-    <Content Include="bundler\vs2010-extension\BundlerRunOnSave.dll.lastcodeanalysissucceeded" />
-    <Content Include="bundler\node_modules\step\package.json" />
-    <Content Include="bundler\node_modules\sass\package.json" />
-    <Content Include="bundler\node_modules\less\package.json" />
-    <Content Include="bundler\node_modules\coffee-script\package.json" />
-    <Content Include="bundler\coffee.cmd" />
-    <Content Include="bundler\bundler.cmd" />
-    <Content Include="bundler\node_modules\handlebars\.jshintrc" />
-    <Content Include="bundler\node_modules\handlebars\.npmignore" />
-    <Content Include="bundler\node_modules\handlebars\.rspec" />
-    <Content Include="bundler\node_modules\handlebars\bin\handlebars" />
-    <Content Include="bundler\node_modules\handlebars\LICENSE" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\LICENSE" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\package.json" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\node_modules\wordwrap\README.markdown" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\package.json" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\optimist\README.markdown" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\bin\uglifyjs" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\package.json" />
-    <Content Include="bundler\node_modules\handlebars\node_modules\uglify-js\README.org" />
-    <Content Include="bundler\node_modules\handlebars\package.json" />
-    <Content Include="bundler\node_modules\handlebars\README.markdown" />
     <None Include="Content\main.scss" />
     <Content Include="Content\normalize.css" />
     <Content Include="Content\style.css" />
@@ -776,6 +544,8 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\Copy to IIS.pubxml" />
+    <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
     <None Include="Scripts\libs\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\CommonModule.js" />
     <Content Include="Scripts\libs\backbone.marionette.js" />
@@ -860,11 +630,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>21164</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:21164/</IISUrl>
+          <IISUrl>http://localhost/SD</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
