@@ -1,6 +1,0 @@
-﻿<section id="main"></section>
-<script>
-    $(function() {
-        App.start();
-    });
-</script>
