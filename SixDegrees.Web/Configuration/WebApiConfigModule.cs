@@ -28,9 +28,10 @@ namespace SixDegrees.Web.Configuration
 
             _apiConfig.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{type}/{id}",
                 defaults: new
                 {
+                    type = RouteParameter.Optional,
                     id = RouteParameter.Optional
                 }
             );

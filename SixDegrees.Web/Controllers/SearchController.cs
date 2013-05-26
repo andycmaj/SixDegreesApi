@@ -18,7 +18,7 @@ namespace SixDegrees.Web.Controllers
             _degreeRepository = degreeRepository;
         }
 
-        // GET api/search/5
+        // GET api/search?type={type}&query={query}s
         public IEnumerable<IDegree> Get(DegreeType type, string query)
         {
             IEnumerable<IDegree> degrees = _degreeRepository.FindDegrees(type, query);

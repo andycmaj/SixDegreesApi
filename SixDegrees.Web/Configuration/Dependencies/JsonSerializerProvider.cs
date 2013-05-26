@@ -27,7 +27,7 @@ namespace SixDegrees.Web.Configuration.Dependencies
                 {
                     MissingMemberHandling = MissingMemberHandling.Ignore,
                     NullValueHandling = NullValueHandling.Ignore,
-                    DefaultValueHandling = DefaultValueHandling.Include,
+                    DefaultValueHandling = DefaultValueHandling.Ignore,
                     ContractResolver = new CamelCasePropertyNamesContractResolver()
                 };
 

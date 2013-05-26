@@ -17,31 +17,13 @@ namespace SixDegrees.Web.Controllers
             _degreeRepository = degreeRepository;
         }
 
-        // GET api/degrees
-        public IEnumerable<string> Get()
+        // GET api/degrees/{type}/{id}
+        public IEnumerable<IDegree> Get(DegreeType type, string id)
         {
-            return new string[] { "value1", "value2" };
-        }
+            IDegree degree = _degreeRepository.GetDegree(type, id);
+            _degreeRepository.PopulateChildren(degree);
 
-        // GET api/degrees/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/degrees
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/degrees/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/degrees/5
-        public void Delete(int id)
-        {
+            return degree.Children;
         }
     }
 }
